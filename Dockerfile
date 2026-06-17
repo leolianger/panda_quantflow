@@ -1,4 +1,4 @@
-FROM panda_factor:latest
+FROM ${PANDA_FACTOR_BASE_IMAGE}
 ENV TZ=Asia/Shanghai
 
 WORKDIR /app

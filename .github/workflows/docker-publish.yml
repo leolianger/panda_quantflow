@@ -41,7 +41,7 @@ jobs:
           images: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/panda_quantflow
           tags: |
             type=raw,value=latest
-            type=sha,format=long
+            type=raw,value=20260617
             type=ref,event=branch
 
       - name: Build and push
@@ -51,5 +51,7 @@ jobs:
           file: Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            PANDA_FACTOR_BASE_IMAGE=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/panda_factor:20260617
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
